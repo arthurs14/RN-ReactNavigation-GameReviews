@@ -7,9 +7,32 @@ const MainStack = createStackNavigator();
 
 const HomeStack = () => {
   return (
-    <MainStack.Navigator>
-      <MainStack.Screen name='Home' component={Home} />
-      <MainStack.Screen name='Review Details' component={ReviewDetails} />
+    <MainStack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: '#eee',
+          height: 60,
+        },
+        headerTintColor: '#444',
+      }}>
+      <MainStack.Screen
+        name="Game Reviews"
+        component={Home}
+        // options={{
+        //   headerStyle: {
+        //     backgroundColor: '#eee',
+        //   },
+        // }}
+      />
+      <MainStack.Screen
+        name="Review Details"
+        component={ReviewDetails}
+        // options={{
+        //   headerStyle: {
+        //     backgroundColor: '#eee',
+        //   },
+        // }}
+      />
     </MainStack.Navigator>
   );
 };
