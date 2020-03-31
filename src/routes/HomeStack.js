@@ -2,6 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import ReviewDetails from '../screens/ReviewDetails';
+import Header from '../shared/Header';
 
 const MainStack = createStackNavigator();
 
@@ -16,23 +17,15 @@ const HomeStack = () => {
         headerTintColor: '#444',
       }}>
       <MainStack.Screen
-        name="Game Reviews"
+        name="Home"
         component={Home}
-        // options={{
-        //   headerStyle: {
-        //     backgroundColor: '#eee',
-        //   },
-        // }}
+        options={({ navigation }) => ({
+          headerTitle: props => (
+            <Header {...props} navigation={navigation} title="Game Reviews" />
+          ),
+        })}
       />
-      <MainStack.Screen
-        name="Review Details"
-        component={ReviewDetails}
-        // options={{
-        //   headerStyle: {
-        //     backgroundColor: '#eee',
-        //   },
-        // }}
-      />
+      <MainStack.Screen name="Review Details" component={ReviewDetails} />
     </MainStack.Navigator>
   );
 };
