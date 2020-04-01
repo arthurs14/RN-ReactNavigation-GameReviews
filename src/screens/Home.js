@@ -10,6 +10,7 @@ import {
 import { globalStyles } from '../styles/global';
 import Card from '../shared/Card';
 import Icon from 'react-native-vector-icons/dist/MaterialIcons';
+import ReviewForm from '../screens/ReviewForm';
 
 const Home = ({ navigation }) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -38,14 +39,14 @@ const Home = ({ navigation }) => {
       {/* <Text style={globalStyles.titleText}>Home Screen</Text> */}
       {/* <Button title='Go to Review Details' onPress={pressHandler} /> */}
       <Modal visible={modalOpen} animationType="slide">
-        <View style={globalStyles.modalContent}>
+        <View style={styles.modalContent}>
           <Icon
             name="close"
             size={24}
             style={{ ...styles.modalToggle, ...styles.modalClose }}
             onPress={() => setModalOpen(false)}
           />
-          <Text>Hello from the modal</Text>
+          <ReviewForm />
         </View>
       </Modal>
 

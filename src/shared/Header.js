@@ -2,9 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import MenuButton from './MenuButton';
 
-const Header = ({ navigation, title }, props) => {
-  console.log('props: ', props);
-  console.log('navigation: ', navigation);
+const Header = ({ navigation, title }) => {
   return (
     <View style={styles.header}>
       <MenuButton navigation={navigation} />
