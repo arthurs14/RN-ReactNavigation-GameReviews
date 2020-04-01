@@ -1,12 +1,18 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import MenuButton from './MenuButton';
 
-const Header = ({ navigation, title }) => {
+const Header = ({ navigation, title }, props) => {
+  console.log('props: ', props);
+  console.log('navigation: ', navigation);
   return (
     <View style={styles.header}>
       <MenuButton navigation={navigation} />
-      <View>
+      <View style={styles.headerTitle}>
+        <Image
+          source={require('../../assets/heart_logo.png')}
+          style={styles.headerImage}
+        />
         <Text style={styles.headerText}>{title}</Text>
       </View>
     </View>
@@ -15,8 +21,8 @@ const Header = ({ navigation, title }) => {
 
 const styles = StyleSheet.create({
   header: {
-    width: 370,
-    height: 50,
+    width: 350,
+    height: 60,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -26,6 +32,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#333',
     letterSpacing: 1,
+  },
+  headerTitle: {
+    flexDirection: 'row',
+  },
+  headerImage: {
+    width: 26,
+    height: 26,
+    marginHorizontal: 10,
   },
 });
 

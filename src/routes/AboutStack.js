@@ -1,5 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Image } from 'react-native';
+import { globalStyles } from '../styles/global';
 import About from '../screens/About';
 import Header from '../shared/Header';
 
@@ -24,6 +26,12 @@ const AboutStack = () => {
               {...props}
               navigation={navigation}
               title="About Game Reviews"
+            />
+          ),
+          headerBackground: () => (
+            <Image
+              source={require('../../assets/game_bg.png')}
+              style={globalStyles.header}
             />
           ),
         })}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Image } from 'react-native';
+import { globalStyles } from '../styles/global';
 import Home from '../screens/Home';
 import ReviewDetails from '../screens/ReviewDetails';
 import Header from '../shared/Header';
@@ -22,6 +24,12 @@ const HomeStack = () => {
         options={({ navigation }) => ({
           headerTitle: props => (
             <Header {...props} navigation={navigation} title="Game Reviews" />
+          ),
+          headerBackground: () => (
+            <Image
+              source={require('../../assets/game_bg.png')}
+              style={globalStyles.header}
+            />
           ),
         })}
       />
