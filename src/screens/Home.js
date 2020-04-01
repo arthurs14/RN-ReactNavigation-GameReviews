@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { View, Text, Button, FlatList, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import { globalStyles } from '../styles/global';
 import Card from '../shared/Card';
-import Header from '../shared/Header';
+import Icon from 'react-native-vector-icons/dist/MaterialIcons';
 
 const Home = ({ navigation }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   const [reviews, setReviews] = useState([
     {
       title: 'Animal Crossing New Horizons',
@@ -29,6 +37,25 @@ const Home = ({ navigation }) => {
     <View style={globalStyles.container}>
       {/* <Text style={globalStyles.titleText}>Home Screen</Text> */}
       {/* <Button title='Go to Review Details' onPress={pressHandler} /> */}
+      <Modal visible={modalOpen} animationType="slide">
+        <View style={globalStyles.modalContent}>
+          <Icon
+            name="close"
+            size={24}
+            style={{ ...styles.modalToggle, ...styles.modalClose }}
+            onPress={() => setModalOpen(false)}
+          />
+          <Text>Hello from the modal</Text>
+        </View>
+      </Modal>
+
+      <Icon
+        name="add"
+        size={24}
+        style={styles.modalToggle}
+        onPress={() => setModalOpen(true)}
+      />
+
       <FlatList
         data={reviews}
         renderItem={({ item }) => (
@@ -43,5 +70,23 @@ const Home = ({ navigation }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  modalToggle: {
+    marginBottom: 10,
+    borderWidth: 1,
+    borderColor: '#f2f2f2',
+    padding: 10,
+    borderRadius: 10,
+    alignSelf: 'center',
+  },
+  modalClose: {
+    marginTop: 20,
+    marginBottom: 0,
+  },
+  modalContent: {
+    flex: 1,
+  },
+});
 
 export default Home;
