@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TextInput, View, Text } from 'react-native';
+import { StyleSheet, Button, TextInput, View, Text, ShadowPropTypesIOS } from 'react-native';
 import { globalStyles } from '../styles/global';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -31,28 +31,53 @@ const ReviewForm = ({ addReview }) => {
           actions.resetForm();
           addReview(values);
         }}>
-        {({ handleChange, handleBlur, handleSubmit, values }) => (
+        {({
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          values,
+          errors,
+          touched,
+        }) => (
           <View>
             <TextInput
               style={globalStyles.input}
               placeholder="Review Title"
               onChangeText={handleChange('title')} // update value
               value={values.title} // saves new value
+              onBlur={handleBlur('title')}
             />
+
+            <Text style={globalStyles.errorText}>
+              {touched.title && errors.title}
+            </Text>
+
             <TextInput
               multiline
               style={globalStyles.input}
               placeholder="Review Body"
               onChangeText={handleChange('body')}
               value={values.body}
+              onBlur={handleBlur('body')}
             />
+
+            <Text style={globalStyles.errorText}>
+              {touched.body && errors.body}
+            </Text>
+
             <TextInput
               style={globalStyles.input}
               placeholder="Rating (1 - 5)"
               onChangeText={handleChange('rating')}
               value={values.rating}
               keyboardType="numeric"
+              onBlur={handleBlur('rating')}
             />
+
+            <Text style={globalStyles.errorText}>
+              {touched.rating && errors.rating}
+            </Text>
+
             <Button title="submit" color="maroon" onPress={handleSubmit} />
           </View>
         )}
